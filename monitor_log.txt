@@ -1,0 +1,8 @@
+[10:29:59] MQTT broker connected successfully
+[10:44:19] MQTT broker connected successfully
+[11:14:09] MQTT broker connected successfully
+[11:21:02] MQTT broker connected successfully
+[11:25:26] MQTT broker connected successfully
+[11:28:15] MQTT broker connected successfully
+[11:48:10] MQTT broker connected successfully
+[11:51:40] MQTT broker connected successfully

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Temperature Monitor</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="dashboard-container">
+        <header class="header">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
+                <h1>TempMonitor</h1>
+            </div>
+            <div class="connection-status">
+                <span class="status-dot disconnected" id="status-dot"></span>
+                <span id="status-text">Disconnected</span>
+            </div>
+        </header>
+
+        <main class="content">
+            <!-- Main Temperature Card -->
+            <section class="card temp-card glass">
+                <h2 class="card-title">Live Temperature</h2>
+                <div class="temp-display">
+                    <span class="temp-value" id="current-temp">--</span>
+                    <span class="temp-unit">°C</span>
+                </div>
+                <div class="temp-metadata">
+                    <p>Last Update: <span id="last-update">Waiting for data...</span></p>
+                    <p>Candidate: <span id="candidate-name" class="highlight">Unknown</span></p>
+                </div>
+            </section>
+
+            <!-- Chart Card -->
+            <section class="card chart-card glass">
+                <h2 class="card-title">Temperature History</h2>
+                <div class="chart-container">
+                    <canvas id="tempChart"></canvas>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Libraries -->
+    <!-- MQTT.js -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
