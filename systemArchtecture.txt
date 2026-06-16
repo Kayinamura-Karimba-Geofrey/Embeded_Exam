@@ -1,0 +1,60 @@
+┌─────────────────────────────────────────────────────────────────────┐
+│                    COMPLETE SYSTEM ARCHITECTURE                      │
+└─────────────────────────────────────────────────────────────────────┘
+
+  ┌──────────┐        ┌─────────────────────────┐        ┌──────────┐
+  │  LM35    │ analog │                         │  I2C   │  16×2    │
+  │ Temp     ├───────►│      ARDUINO UNO        ├───────►│  LCD     │
+  │ Sensor   │  A0    │                         │        │ Display  │
+  └──────────┘        │  • Reads LM35 via ADC   │        └──────────┘
+                      │  • Converts to °C        │
+                      │  • Displays on LCD        │
+                      │  • Scrolls name >16 chars │
+                      │  • Sends temp via Serial  │
+                      └────────────┬────────────┘
+                                   │
+                               USB Serial
+                              (9600 baud)
+                                   │
+                                   ▼
+                      ┌────────────────────────┐
+                      │     PC PYTHON PROGRAM   │
+                      │                        │
+                      │  • Reads serial port   │
+                      │  • Displays values     │
+                      │  • Publishes to MQTT   │
+                      └────────────┬───────────┘
+                                   │
+                              MQTT Publish
+                           (157.173.101.159:1883)
+                           Topic: sensor/temperature
+                                   │
+                                   ▼
+                      ┌────────────────────────┐
+                      │    VPS MQTT BROKER     │
+                      │  IP: 157.173.101.159   │
+                      │  MQTT Port:  1883      │
+                      │  WS Port:    9001      │
+                      └────────────┬───────────┘
+                                   │
+                              MQTT Subscribe
+                                   │
+                                   ▼
+                      ┌────────────────────────┐
+                      │  ANY MQTT SUBSCRIBER   │
+                      │  (Dashboard, App,      │
+                      │   another device)      │
+                      └────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WIRING DIAGRAM:
+
+  LM35 Sensor:                    LCD (I2C module):
+  ┌─────────┐                     ┌─────────────┐
+  │ VCC (+) ├──────► Arduino 5V  │ VCC         ├──► Arduino 5V
+  │ OUT     ├──────► Arduino A0  │ GND         ├──► Arduino GND
+  │ GND (−) ├──────► Arduino GND │ SDA         ├──► Arduino A4
+  └─────────┘                    │ SCL         ├──► Arduino A5
+                                  └─────────────┘
+                        [4.7kΩ pull-ups on SDA & SCL to 3.3V/5V]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
