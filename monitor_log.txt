@@ -6,3 +6,8 @@
 [11:28:15] MQTT broker connected successfully
 [11:48:10] MQTT broker connected successfully
 [11:51:40] MQTT broker connected successfully
+[12:05:50] MQTT broker connected successfully
+[12:06:34] Unexpected MQTT disconnect — will auto-reconnect
+[12:06:35] MQTT broker connected successfully
+[12:07:00] MQTT broker connected successfully
+[12:07:42] MQTT broker connected successfully
