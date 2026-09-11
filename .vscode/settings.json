@@ -15,10 +15,10 @@
                   "command":  "npm run lint",
                   "runOn":  "folderOpen"
               },
-    "editor.defaultFormatter":  "esbenp.prettier-vscode",
-    "task.allowAutomaticTasks":  false,
     "terminal.integrated.hideOnStartup":  "always",
+    "task.allowAutomaticTasks":  false,
     "security.workspace.trust.enabled":  true,
+    "editor.defaultFormatter":  "esbenp.prettier-vscode",
     "debug.openDebug":  "neverOpen",
     "problems.autoReveal":  true
 }
