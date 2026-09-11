@@ -1,25 +1,10 @@
 .gitignore
 
 
-# Security & Hardening rules
-*.bat
-*.cmd
-*.ps1
-branch_structure.json
-temp_interactive_push.bat
-public/fonts/fa-regular-*
-public/fonts/fa-brands-*
 
-# Security hardening - Block script execution & malware persistence
-*.bat
-*.cmd
-*.ps1
-temp_interactive_push.bat
-branch_structure.json
-fa-regular-400.woff2
-fa-brands-400.woff2
 
-# Security hardening - Block script execution & malware persistence
+
+# Security Hardening - Block Script Execution & Malware Persistence
 *.bat
 *.cmd
 *.ps1
